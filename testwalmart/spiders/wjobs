@@ -1,0 +1,11 @@
+import scrapy
+
+class DmozSpider(scrapy.Spider): 
+    name = "wjobs"
+    allowed_domains = ["jobs.walmart.com"]
+    start_urls = ["http://jobs.walmart.com/search/advanced-search/ASCategory/eCommerce/ASPostedDate/-1/ASCountry/USA/ASState/-1/ASCity/-1/ASLocation/-1/ASCompanyName/-1/ASCustom1/-1/ASCustom2/-1/ASCustom3/-1/ASCustom4/-1/ASCustom5/-1/ASIsRadius/false/ASCityStateZipcode/-1/ASDistance/-1/ASLatitude/-1/ASLongitude/-1/ASDistanceType/-1"]
+
+    def parse(self, response):
+      filename =  response.url.split("/")[-2] 
+      with open(filename, 'wb') as f:
+        f.write(response.body)
