@@ -8,7 +8,7 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
 
-BOT_NAME = 'testwalmart'
+BOT_NAME = 'jobful'
 
 SPIDER_MODULES = ['testwalmart.spiders']
 NEWSPIDER_MODULE = 'testwalmart.spiders'
