@@ -23,7 +23,9 @@ class WJobsSpider(CrawlSpider):
 
         job["title"] = sel.xpath('//span[@itemprop="title"]//text()')[0].extract()
         job["description"] = sel.xpath('//span[@itemprop="description"]//ul//text()').extract()
+        job["location"] = sel.xpath('//span[@class="info"]//text()')[0].extract().split(":")[1]
         job["company"] = "walmart.com"
-        job["date"] = date.today().isoformat()
+        job["url"] = response.url
+        job["updated_at"] = date.today().isoformat()
 
         return job

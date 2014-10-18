@@ -6,4 +6,7 @@ class Job(Item):
     title = Field()
     description = Field()
     company = Field()
-    date = Field()
+    location = Field()
+    qualifications = Field()
+    url = Field()
+    updated_at = Field()
