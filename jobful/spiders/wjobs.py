@@ -2,9 +2,10 @@ from scrapy.contrib.spiders import CrawlSpider
 from scrapy.http import Request
 from scrapy.selector import Selector
 from jobful.items import Job
+from datetime import date
 
 
-class DmozSpider(CrawlSpider):
+class WJobsSpider(CrawlSpider):
     name = "wjobs"
     allowed_domains = ["jobs.walmart.com"]
     start_urls = ["http://jobs.walmart.com/careers/it-&-software-development-jobs/job-list-1"]
@@ -22,5 +23,7 @@ class DmozSpider(CrawlSpider):
 
         job["title"] = sel.xpath('//span[@itemprop="title"]//text()')[0].extract()
         job["description"] = sel.xpath('//span[@itemprop="description"]//ul//text()').extract()
+        job["company"] = "walmart.com"
+        job["date"] = date.today().isoformat()
 
-        print job
+        return job
