@@ -8,14 +8,15 @@ from datetime import date
 class WJobsSpider(CrawlSpider):
     name = "wjobs"
     allowed_domains = ["jobs.walmart.com"]
-    start_urls = ["http://jobs.walmart.com/careers/it-&-software-development-jobs/job-list-1"]
+    page_prefix = "http://jobs.walmart.com/careers/it-&-software-development-jobs/job-list"
+    start_urls = ["%s-%d" % (page_prefix, i) for i in range(1, 100)]
 
     def parse(self, response):
         for sel in Selector(response).xpath('//td[@class="jobTitle"]'):
             meta = sel.xpath('//td[@class="jobTitle"]/a/@href').extract()
 
-        for m in meta:
-            yield Request("http://jobs.walmart.com" + m, callback=self.parse_link)
+            for m in meta:
+                yield Request("http://jobs.walmart.com" + m, callback=self.parse_link)
 
     def parse_link(self, response):
         sel = Selector(response)
