@@ -9,7 +9,7 @@ class WJobsSpider(CrawlSpider):
     name = "wjobs"
     allowed_domains = ["jobs.walmart.com"]
     page_prefix = "http://jobs.walmart.com/careers/it-&-software-development-jobs/job-list"
-    start_urls = ["%s-%d" % (page_prefix, i) for i in range(1, 100)]
+    start_urls = ["%s-%d" % (page_prefix, i) for i in range(1, 10)]
 
     def parse(self, response):
         for sel in Selector(response).xpath('//td[@class="jobTitle"]'):
@@ -23,7 +23,7 @@ class WJobsSpider(CrawlSpider):
         job = Job()
 
         job["title"] = sel.xpath('//span[@itemprop="title"]//text()')[0].extract()
-        job["description"] = sel.xpath('//span[@itemprop="description"]//ul//text()').extract()
+        job["description"] = sel.xpath('//span[@itemprop="description"]//text()').extract()
         job["location"] = sel.xpath('//span[@class="info"]//text()')[0].extract().split(":")[1]
         job["company"] = "walmart.com"
         job["url"] = response.url
