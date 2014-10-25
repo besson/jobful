@@ -1,3 +1,4 @@
 pymongo
 solr
 solrpy
+ijson

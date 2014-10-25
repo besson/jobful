@@ -5,8 +5,8 @@ from jobful.items import Job
 from datetime import date
 
 
-class WJobsSpider(CrawlSpider):
-    name = "wjobs"
+class WalmartJobsSpider(CrawlSpider):
+    name = "wm-jobs"
     allowed_domains = ["jobs.walmart.com"]
     page_prefix = "http://jobs.walmart.com/careers/it-&-software-development-jobs/job-list"
     start_urls = ["%s-%d" % (page_prefix, i) for i in range(1, 10)]
