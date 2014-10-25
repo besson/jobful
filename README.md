@@ -7,6 +7,7 @@ Requirements:
   - mongo and Solr
 
 Features:
+
 1. Crawl job positions:
   - scrapy crawl <spider>    # ex. scrapy crawl wm-jobs
 
