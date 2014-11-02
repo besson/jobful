@@ -2,3 +2,5 @@ pymongo
 solr
 solrpy
 ijson
+scrapy
+selenium
