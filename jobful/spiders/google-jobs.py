@@ -23,8 +23,7 @@ class GoogleJobsSpider(CrawlSpider):
 
             for url in urls:
                 clean_url = str(url.get_attribute("href")).replace("https", "http") 
-                print clean_url
-                yield Request(clean_url, callback=self.parse_link)
+                yield Request(clean_url, meta = {'dont_redirect': True, 'handle_httpstatus_list': [302]}, callback=self.parse_link)
                 time.sleep(5)
 
         driver.quit()
@@ -33,7 +32,7 @@ class GoogleJobsSpider(CrawlSpider):
         sel = Selector(response)
         job = Job()
 
-        job["title"] = sel.xpath('//span[@itemprop="name title"]//text()')[0].extract()
+        job["title"] = sel.xpath('//span[@itemprop="name"]//text()')[0].extract()
         job["description"] = sel.xpath('//div[@class="detail-item"]//text()').extract()
         job["location"] = sel.xpath('//div[@class="info-text"]//text()')[0].extract()
         job["company"] = "google.com"
