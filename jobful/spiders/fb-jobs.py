@@ -24,7 +24,7 @@ class FacebookJobsSpider(CrawlSpider):
         sel = Selector(response)
         job = Job()
 
-        job["title"] = sel.xpath("//h3[contains(@class,'mvs careersSubPageSubTitle')]//text()").extract()
+        job["title"] = sel.xpath("//h3[contains(@class,'mvs careersSubPageSubTitle')]//text()").extract()[0]
         job["location"] = sel.xpath("//div[contains(@class, 'mf')]//text()")[0].extract()
         job["description"] = sel.xpath("//ul[contains(@class,'uiList mts')]//li//text()").extract()
         job["company"] = "facebook"
