@@ -16,11 +16,3 @@ def coord(address):
 def clean(address):
      return(address.strip().replace(".com",""))
 
-
-def main():
-        #print(decode_address_to_coordinates("850+Cherry+Ave,+San+Bruno")) ok
-        print(coord("walmart office san bruno"))
-    
-if __name__ == '__main__':
-    main()
-
