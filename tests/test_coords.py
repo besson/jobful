@@ -8,5 +8,5 @@ class TestGetCoordinates(TestCase):
         addresses = ["850 Cherry Avenue, San Bruno", "WALMART OFFICE SAN BRUNO"]
         for element in addresses:
             ret = geo.coord(element)
-            self.assertEqual(int(ret["lng"]),-122)
-            self.assertEqual(int(ret["lat"]),37)
+            self.assertEqual(-122, int(ret["lng"]))
+            self.assertEqual(37, int(ret["lat"]))
