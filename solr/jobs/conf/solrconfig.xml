@@ -1140,10 +1140,11 @@
        RequestHandlers.  
     -->
   <requestHandler name="/admin/" 
-                  class="solr.admin.AdminHandlers" />
+    class="solr.admin.AdminHandlers" />
+  <requestHandler name="/admin/luke"       class="solr.admin.LukeRequestHandler" />
+
   <!-- This single handler is equivalent to the following... -->
   <!--
-     <requestHandler name="/admin/luke"       class="solr.admin.LukeRequestHandler" />
      <requestHandler name="/admin/system"     class="solr.admin.SystemInfoHandler" />
      <requestHandler name="/admin/plugins"    class="solr.admin.PluginInfoHandler" />
      <requestHandler name="/admin/threads"    class="solr.admin.ThreadDumpHandler" />
