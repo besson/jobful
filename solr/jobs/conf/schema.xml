@@ -8,11 +8,12 @@
 
    <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
    <field name="title" type="string" indexed="true" stored="false" multiValued="false"/>
-   <field name="title_txt" type="text_general" indexed="true" stored="true" multiValued="false"/>
+   <field name="title_s" type="text_general" indexed="true" stored="true" multiValued="false"/>
    <field name="description" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="company" type="text_general" indexed="true" stored="true" />
    <field name="location" type="text_general" indexed="true" stored="true" />
-   <field name="geo_location" type="location" indexed="true" stored="true" />
+   <field name="geo_location_s" type="location" indexed="true" stored="false" />
+   <field name="geo_location" type="string" indexed="true" stored="true" />
    <field name="qualifications" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="url" type="text_general" stored="true" multiValued="false"/>
 
@@ -28,8 +29,9 @@
 
  <uniqueKey>id</uniqueKey>
 
-   <copyField source="title" dest="title_txt"/>
-   <copyField source="title_txt" dest="text"/>
+   <copyField source="title" dest="title_s"/>
+   <copyField source="geo_location" dest="geo_location_s"/>
+   <copyField source="title_s" dest="text"/>
    <copyField source="description" dest="text"/>
 
   <types>
