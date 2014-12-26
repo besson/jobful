@@ -12,13 +12,20 @@ def index():
         job["updated_at"] = date.today()
 
         try:
-            geo = db.company_coordinates.find({"$and": [{"_id.company": job["company"]}, {"_id.location": job["location"]}]})[0]
+            company = job["company"]
+            location = job["location"]
+            geo = db.company_coordinates.find(_get_query(company, location))[0]
+
             job["geo_location"] = "%f,%f" % (geo["lat"], geo["lng"])
             print dict(job)
 
             s.add(dict(job), commit=True)
-        except Exception:
-            print "error \n"
+        except Exception as e:
+            print e
             pass
+
+
+def _get_query(company, location):
+    return {"$and": [{"_id.company": company}, {"_id.location": location}]}
 
 index()
