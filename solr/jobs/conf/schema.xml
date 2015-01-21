@@ -23,7 +23,7 @@
    <field name="text_rev" type="text_general_rev" indexed="true" stored="false" multiValued="true"/>
    <field name="manu_exact" type="string" indexed="true" stored="false"/>
 
-   <dynamicField name="*_coordinate"  type="tdouble" indexed="true"  stored="false" />
+   <dynamicField name="*_coordinate"  type="tdouble" indexed="true"  stored="false" multiValued="true"/>
 
  </fields>
 
