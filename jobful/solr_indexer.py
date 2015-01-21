@@ -11,19 +11,18 @@ def index():
         job["id"] = str(job.pop("_id"))
         job["updated_at"] = date.today()
 
-        #try:
-        company = job["company"]
-        location = job["location"]
-        geo = job.pop("coordinate") 
-        print geo
-        job["geo_location"] = "%f,%f" % (geo["lat"], geo["lng"])
-        print job["geo_location"]
-        #job = {"id": "mydoc", "company": "Me"} 
-        #print type(job)
-        s.add(job)
-        #except Exception as e:
-        #    print e
-        #    pass
+        try:
+            company = job["company"]
+            location = job["location"]
+            geo = job.pop("coordinate") 
+            print geo
+            job["geo_location"] = "%f,%f" % (geo["lat"], geo["lng"])
+            print job["geo_location"]
+
+            s.add(job)
+        except Exception as e:
+            print e
+            pass
 
 
 index()

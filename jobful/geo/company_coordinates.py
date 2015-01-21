@@ -37,9 +37,3 @@ def _find_company_coord(company, location):
        return coords
     else:
        return None
-
-def main():
-    print(find_company_coord("amazon","US, TN, Lebanon"))
-
-if __name__ == '__main__':
-    main()
